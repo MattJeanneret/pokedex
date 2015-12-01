@@ -16,8 +16,18 @@ class Scraper:
         names = soup.find_all("a", attrs={"class": "ent-name"})
         types = soup.find_all("a", attrs={"class": "type-icon"})
         pp = soup.find_all("td", attrs={"class": "num"})
-        effect = soup.find_all("td", attrs={"class": "long-text"})
-        print(effect)
+        effects = soup.find_all("td", attrs={"class": "long-text"})
+
+        with open("Moves.csv", "w", newline = '') as csvfile:
+            outwriter = csv.writer(csvfile)
+            counter = 0
+            for name in names:
+                move = name.get_text()
+                move_type = types[counter].get_text()
+                points = pp[((counter + 1)*3)-1].get_text()
+                effect = effects[counter].get_text()
+                counter += 1
+                outwriter.writerow([move] + [move_type] + [points] + [effect])
         #find the correct table and its descendants
        # tables = soup.find_all("table", attrs={"class": "wsod_dataTable wsod_dataTableBig"})
         #symbols = soup.find_all("a", attrs={"class": "wsod_symbol"})
