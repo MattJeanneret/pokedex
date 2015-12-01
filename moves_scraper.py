@@ -27,7 +27,7 @@ class Scraper:
                 points = pp[((counter + 1)*3)-1].get_text()
                 effect = effects[counter].get_text()
                 counter += 1
-                outwriter.writerow([move] + [move_type] + [points] + [effect])
+                outwriter.writerow([move] + [move_type] + [effect] + [points])
         #find the correct table and its descendants
        # tables = soup.find_all("table", attrs={"class": "wsod_dataTable wsod_dataTableBig"})
         #symbols = soup.find_all("a", attrs={"class": "wsod_symbol"})
