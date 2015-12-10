@@ -21,12 +21,13 @@ class Scraper:
             outwriter = csv.writer(csvfile)
             counter = 0
             for name in names:
+                number = counter + 1
                 move = name.get_text()
                 move_type = types[counter].get_text()
                 points = pp[((counter + 1)*3)-1].get_text()
                 effect = effects[counter].get_text()
                 counter += 1
-                outwriter.writerow([move] + [move_type] + [effect] + [points])
+                outwriter.writerow([number] + [move] + [move_type] + [effect] + [points])
 
 X = Scraper()
 X.Scrape_Moves()
